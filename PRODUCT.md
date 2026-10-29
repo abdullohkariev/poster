@@ -10,7 +10,7 @@ A gentle interactive exhibition about identity, choices, voice and empathy, grou
 ## Positioning
 Understand circumstances before judging choices. Silence can be survival.
 ## Brand Personality
-Thoughtful, humane, literary. Approved editorial cream, green and terracotta; symbolic geometric SVG art.
+Thoughtful, humane, cinematic. Restrained charcoal, deep red and warm-neutral editorial system; original symbolic SVG art.
 ## Conversion & proof
 Two-minute journey or deeper exploration, ending in a private reflection card. Proof comes from verified printed book pages.
 ## Accessibility

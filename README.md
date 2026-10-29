@@ -1,6 +1,6 @@
 # WHO ARE YOU?
 
-A static React + TypeScript literary exhibition inspired by Sharifa Sharif’s memoir. Designed for school visitors arriving from the poster QR code. No backend, analytics, public submissions or runtime API calls.
+A static React + TypeScript literary exhibition inspired by Sharifa Sharif’s memoir. Version 2 adds a session-scoped cinematic opening, weighted reflection styles, personalized cards, clearer scenario progress and separately sourced historical context. No backend, analytics, public submissions or runtime APIs.
 
 ## Run locally
 
@@ -30,14 +30,16 @@ npm.cmd test
 
 The test configuration uses the existing Chromium installation on the original workstation if present, otherwise Playwright’s installed browser. You can override with `PLAYWRIGHT_CHROMIUM_EXECUTABLE`. Tests start the production preview automatically; run the build first. Screenshots and the exported card go to ignored `output/playwright/`.
 
-Tests cover scenario navigation and restart; path switching without losing answers; value limits; deterministic text; malformed and unavailable storage; reload recovery and clearing; real 1080 × 1350 PNG export; clipboard; keyboard operation; verified-reference safeguards; and layout widths 375, 390, 768, 1024 and 1440.
+Eleven tests cover the intro lifecycle and reduced motion; scenario progress; path switching; five deterministic reflection styles and tie handling; three distinct result sets; value influence; malformed and unavailable storage; reload recovery and true clearing; 1080 × 1350 PNG export; clipboard; research links; keyboard operation; verified-reference safeguards; and widths 375, 390, 768, 1024 and 1440.
 
 ## Content and privacy
 
 - [Book evidence](docs/book-evidence.md) records verified printed pages, source file locations, corrections and unreadable material.
 - [Content and quality review](docs/content-review.md) explains age-appropriate treatment and validation.
+- [Asset audit](docs/asset-audit.md) documents every supplied image and why unlicensed photographs are excluded.
+- [External sources](docs/external-sources.md) separates UNESCO, UNICEF and IIFA context from memoir evidence.
 - `src/data/book.ts`, `scenarios.ts`, and `reflection.ts` separate content and typed models from presentation.
-- Reflection state stays under `who-are-you:reflection:v1` in localStorage. It is never sent anywhere. If storage is blocked, the current session still works. Clearing removes the saved entry. Scenario answers remain in memory while switching paths; they are not saved across reloads.
+- Reflection state stays under `who-are-you:reflection:v2` in localStorage. It is never sent anywhere. If storage is blocked, the current session still works. Clearing removes the saved entry. Scenario answers and selected values persist across reloads and path changes.
 - PDF scans, the original photo, analysis packages and generated review images are ignored. Never put them in `public/`.
 
 ## Existing repository and safe migration
@@ -90,11 +92,14 @@ This follows the [official Vite GitHub Pages deployment guide](https://vite.dev/
 
 ## Main files
 
-- `src/App.tsx`: page, navigation and experience switching.
+- `src/App.tsx`: page, persistence, intro state and experience switching.
+- `src/components/CinematicIntro.tsx`: session-only opening with skip/replay and reduced-motion behavior.
+- `src/components/ContextSection.tsx`: separately sourced Afghanistan context.
 - `src/components/Art.tsx`: original symbolic vector portrait and five compact symbols.
 - `src/components/BookSections.tsx`: reading trail, themes and evidence explorer.
 - `src/components/StoryChoices.tsx`: three-situation journey.
-- `src/components/ReflectionBuilder.tsx`: values, private persistence, preview and controls.
+- `src/components/ReflectionBuilder.tsx`: personalized result, values, preview and controls.
+- `src/data/reflection.ts`: typed, weighted, deterministic reflection engine.
 - `src/utils/cardExport.ts`: canvas-based standalone PNG export.
 - `src/styles.css`: responsive editorial design and accessibility states.
 - `.github/workflows/deploy.yml`: GitHub Pages build and publication.

@@ -1,15 +1,25 @@
-export interface Scenario { title:string; situation:string; options:{text:string; feedback:string}[]; connection:string }
-export const scenarios:Scenario[] = [
- {title:'Someone gets blamed.',situation:'A student is blamed for something they did not do. Other classmates start agreeing without hearing their side.',options:[
- {text:'Listen to the student before judging.',feedback:'Listening makes room for a story others may have missed. You do not have to decide what happened on your own.'},
- {text:'Ask a trusted teacher to help.',feedback:'Asking for support is a thoughtful action. A trusted adult can help everyone be heard safely.'},
- {text:'Stay quiet because you feel nervous.',feedback:'Feeling nervous is understandable. You could check in privately later or ask a trusted adult for help. Your safety matters too.'}],connection:'A connection to guilt: being blamed does not mean someone is responsible. Consider the circumstances before judging.'},
- {title:"Someone isn’t being heard.",situation:'A classmate has an idea, but others keep interrupting.',options:[
- {text:'Invite them to finish speaking.',feedback:'A small invitation can make space for someone else. Let them decide whether they want to continue.'},
- {text:'Ask the group to listen fairly.',feedback:'You can help the group notice a habit that shuts someone out. A calm reminder can change the conversation.'},
- {text:'Speak to them privately afterward.',feedback:'Support can be quiet too. Ask what they would find helpful instead of speaking for them.'}],connection:'A connection to voice: supporting someone means making room for their words and respecting their choices.'},
- {title:'Is a rule always fair?',situation:'A school activity leaves some students out for a reason that does not seem fair.',options:[
- {text:'Ask why the rule exists.',feedback:'A respectful question can help you understand the reason for a rule and notice whose needs it overlooks.'},
- {text:'Suggest a more inclusive solution.',feedback:'Offering an alternative can turn concern into a practical change. Listen to the students affected.'},
- {text:'Speak with a trusted teacher or organizer.',feedback:'You do not have to change the rule alone. Someone with responsibility can help consider a fairer approach.'}],connection:'A connection to education: opportunities are shaped by rules and expectations. Fairness includes asking who can take part.'}
+import type { ReflectionStyle } from './reflection';
+
+export interface ScenarioOption { text:string; feedback:string; tradeoff:string; takeaway:string; weights:Partial<Record<ReflectionStyle,number>> }
+export interface Scenario { title:string; situation:string; prompt:string; options:ScenarioOption[]; connection:string; art:number }
+
+export const scenarios:Scenario[]=[
+ {title:'Before the verdict',situation:'A student is blamed before anyone hears their explanation. The group has already started repeating the accusation.',prompt:'How would you make space for a fair response?',art:4,options:[
+  {text:'Listen to the student privately.',feedback:'You begin with the person whose voice is missing.',tradeoff:'Listening can build trust, though serious situations may still need adult support.',takeaway:'Understanding starts by hearing what others have overlooked.',weights:{listener:2,supporter:1}},
+  {text:'Ask what evidence the group has.',feedback:'You slow the rush to judgment and test the claim.',tradeoff:'Questions can reveal assumptions, but the student may also need personal support.',takeaway:'Fairness requires evidence, not repetition.',weights:{questioner:2,listener:1}},
+  {text:'Invite a trusted teacher to help.',feedback:'You seek a safer process with someone responsible for the group.',tradeoff:'Adult help can protect everyone involved, especially when the facts or risks are unclear.',takeaway:'Careful action is still action.',weights:{protector:2,supporter:1}},
+  {text:'Check in and offer support afterward.',feedback:'You notice the human impact even if speaking in the moment feels difficult.',tradeoff:'Private support matters; it may work best alongside a fair way to address the accusation.',takeaway:'Support can be quiet, practical and sincere.',weights:{supporter:2,listener:1}}
+ ],connection:'The memoir’s discussion of guilt asks us to separate blame from responsibility. This school situation is hypothetical.'},
+ {title:'A voice interrupted',situation:'A classmate has an idea, but others keep speaking over them. You can see they are deciding whether to continue.',prompt:'How would you help without taking over?',art:2,options:[
+  {text:'Invite them to finish in their own words.',feedback:'You return the floor without speaking for them.',tradeoff:'A direct invitation can help, while leaving them free to decline.',takeaway:'Supporting a voice includes respecting choice.',weights:{advocate:2,listener:1}},
+  {text:'Ask the group to pause and listen fairly.',feedback:'You name the pattern and ask the group to change it.',tradeoff:'This can reset the conversation, especially when done calmly and safely.',takeaway:'Fair participation sometimes needs a clear reminder.',weights:{advocate:2,questioner:1}},
+  {text:'Speak with the classmate privately afterward.',feedback:'You choose a quieter way to understand what support they want.',tradeoff:'Private care can feel safer, though it may not change the group’s habit by itself.',takeaway:'Help should begin with what the person finds useful.',weights:{listener:2,supporter:1}},
+  {text:'Ask a teacher to structure equal speaking time.',feedback:'You look for a practical system that protects everyone’s chance to contribute.',tradeoff:'A shared rule can help without singling anyone out.',takeaway:'Safe structures can make fairness easier to practise.',weights:{protector:2,questioner:1}}
+ ],connection:'Sharifa’s reflections on language and identity show why finding words—and deciding when to share them—can matter.'},
+ {title:'A rule that excludes',situation:'A school activity leaves some students out for a reason that does not seem fair. The organizer may not have noticed the effect.',prompt:'What would you do first?',art:3,options:[
+  {text:'Ask why the rule exists and who it affects.',feedback:'You begin with curiosity and look for the reason behind the outcome.',tradeoff:'Understanding the rule helps you suggest a change that addresses the real problem.',takeaway:'Good questions can uncover hidden assumptions.',weights:{questioner:2,listener:1}},
+  {text:'Suggest a specific, more inclusive option.',feedback:'You turn concern into a practical alternative.',tradeoff:'A solution is stronger when the affected students help shape it.',takeaway:'Fairness can become concrete through design and action.',weights:{advocate:2,supporter:1}},
+  {text:'Ask affected students what support they want.',feedback:'You avoid assuming that you know the best response for someone else.',tradeoff:'Listening first may take longer, but it keeps their agency at the centre.',takeaway:'Support is most useful when it is shaped with people, not for them.',weights:{listener:2,supporter:1}},
+  {text:'Bring the concern to a trusted organizer.',feedback:'You involve someone who can review the rule and its consequences.',tradeoff:'This can be a safer route when challenging the rule directly feels risky.',takeaway:'Responsibility includes choosing a safe path to change.',weights:{protector:2,advocate:1}}
+ ],connection:'The memoir’s education chapters show that opportunity depends on more than hope; rules and circumstances shape who can take part.'}
 ];

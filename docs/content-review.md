@@ -1,6 +1,6 @@
-# Content and quality review
+# Version 2 content and quality review
 
-Reviewed 29 October 2026.
+Reviewed 29 October 2026 after the Version 2 upgrade.
 
 ## Audience review
 
@@ -10,11 +10,15 @@ Reviewed 29 October 2026.
 
 **Teacher:** Printed page references are visually checked and documented in `book-evidence.md`. The doctor is correctly identified as the author’s cousin. Unreadable Part 1 references are omitted. The mother's care and strength are recognized without turning her silence into a character flaw. The selected passages are not presented as a complete memoir summary or a representation of all Afghan women.
 
-## Design review and improvements
+## Version 2 design and interaction review
 
-- Original split SVG portrait uses architectural enclosure and an open arch. Its accessible description explicitly identifies it as symbolic, not a portrait of Sharifa.
-- A restrained cream/green/terracotta palette and locally served serif/sans fonts connect the poster and reading experience.
-- Dark-green scenario area separates active choices from literary reading. Chapters and themes use ruled rows rather than a dashboard layout.
+- Original split SVG portrait remains the visual anchor and is explicitly identified as symbolic, not a portrait of Sharifa.
+- A restrained charcoal, deep-red and warm-neutral system creates a more serious exhibition identity.
+- The cinematic intro plays once per browser session, can be skipped immediately, can be replayed, and collapses quickly under reduced motion.
+- The scenario stage now explains the task, records the selection, presents tradeoffs and a book-theme connection, and maintains one obvious next action.
+- Five typed reflection styles combine weighted scenario choices with selected values. Results are descriptive, not diagnostic or moral scores.
+- The Afghanistan context section is visually and editorially separate from the memoir and cites UNESCO, UNICEF and IIFA directly.
+- Submitted photographs remain unpublished because rights, dates and identities were not sufficiently documented.
 - Review of the exported PNG revealed the initial title was too wide. Explicit font loading, a smaller title and bounded text width corrected it.
 - Stress-tested export with the longest value labels and a 140-character unbroken word. Wrapping stays inside the card and above its footer.
 - Small terracotta text was darkened to #8b4838 to meet normal-text contrast; the approved #A85C49 remains the large display/accent color. Ink/cream and sage/green body combinations have strong contrast. Muted text #57615a on cream is approximately 5.72:1.
@@ -24,7 +28,7 @@ Reviewed 29 October 2026.
 
 - `npm.cmd run typecheck`: passed.
 - `npm.cmd run build`: passed; production assets use `/poster/`.
-- Six Playwright tests against the production preview: passed.
+- Eleven Playwright tests against the production preview: passed.
 - Scenario selection, disabled Next before an answer, Back, retained answers across path changes, completion and Restart: passed.
 - Up-to-three value selection, natural deterministic text, optional action, preview, PNG, clipboard, Edit, Reset and clear-saved control: passed.
 - Reflection restored after reload; corrupted JSON recovered safely; unavailable localStorage keeps the interface usable: passed.
